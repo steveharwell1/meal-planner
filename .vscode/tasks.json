@@ -6,7 +6,7 @@
         {
             "label": "upload",
             "type": "shell",
-            "command": "rsync -avz ~/dev/eating/meal-planner/ 206.189.203.250:'/var/www/journeysinprogramming.com/public_html'",
+            "command": "rsync -avz --delete ~/dev/eating/meal-planner/ 206.189.203.250:'/var/www/journeysinprogramming.com/public_html'",
             "problemMatcher": [],
             "group": {
                 "kind": "build",

@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
 <body>
 
 <?php
-include "includes/conn.php";
+require_once "includes/header.php";
+require_once "includes/loginRequired.php";
+echo "<div>";
+echo "Hello, ".$name.' <a href="logout.php">Logout</a>';
+echo "</div>";
 
-$name = "spaghetti";
-$sql ='SELECT Recipes.Name as Recipe_title, Ingredients.Name as ingredient, amount FROM RecipesIngredients INNER JOIN Recipes ON RecipesIngredients.R_id = Recipes.id INNER JOIN Ingredients on RecipesIngredients.G_id = Ingredients.id WHERE Recipes.name = "'.$name.'"';
-$result = $conn->query($sql);
+echo '<div class="container">';
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    
-    echo "<h3>".$name."</h3>";
-    while($row = $result->fetch_assoc()) {
-        echo $row["ingredient"]. "<br>";
-    }
-} else {
-    echo "0 results";
-}
+list_recipe($conn, "tacos");
+list_recipe($conn, "spaghetti");
+
 $conn->close();
 ?> 
-
+</div>
 </body>
 </html>
